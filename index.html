@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Slayer: Last Hope</title>
+    <link id="favicon" rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-button active" data-tab="how-to-play" type="button">How to Play</button>
+            <button class="tab-button" data-tab="game-stats" type="button">Game Stats</button>
+            <button class="tab-button" data-tab="options" type="button">Options</button>
+        </div>
+        <div class="tab-content active" id="how-to-play">
+            <h1>How to Play</h1>
+            <div class="hero-image-container">
+                <img src="hero.webp" alt="Hero" class="hero-image">
+            </div>
+            <div class="controls">
+                <div class="control-item">
+                    <span class="key" title="Reliable but basic. Unlimited ammo but limited firepower. 2-second reload time.">1</span>
+                    <span class="action">"Peashooter" (Your Trusty Sidearm)</span>
+                </div>
+                <div class="control-item">
+                    <span class="key" title="Earned by slaying 20 monsters. Spray bullets with abandon! Costs 10 ammo per shot, but no reload needed.">2</span>
+                    <span class="action">"Lead Storm" (Machine Gun)</span>
+                </div>
+                <div class="control-item">
+                    <span class="key" title="Save those poor souls...or snag a monster. But beware, hooking a boss spells doom!">3</span>
+                    <span class="action">"Rescue Rope" (Grappling Hook)</span>
+                </div>
+                <div class="control-item">
+                    <span class="key" title="Infinite power at a price! Upgrade this gun endlessly with your hard-earned machine gun ammo.">4</span>
+                    <span class="action">"The Widowmaker" (Upgraded Gun)</span>
+                </div>
+                <div class="control-item">
+                    <span class="key" title="Got some spare ammo? Visit the shop to upgrade 'The Widowmaker' further. In this world, ammo is currency!">5</span>
+                    <span class="action">"The Black Market" (Upgrade Shop)</span>
+                </div>
+            </div>
+            <p>In a world overrun by monsters (👾 🚀 🛡️ 🦘 👹), you're humanity's last hope. Save humans (🧑), slay the beasts, and survive as long as you can. Remember, money talks, but ammo walks!</p>
+        </div>
+        <div class="tab-content" id="game-stats">
+            <h1>Game Stats</h1>
+            <div class="stats-grid">
+                <div class="stat-item" title="Score: Your worth in a world gone mad. More points, more bragging rights.">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="score">0</span>
+                </div>
+                <div class="stat-item" title="Wave: How many waves of monstrosities you've survived. Don't get cocky!">
+                    <span class="stat-label">Wave</span>
+                    <span class="stat-value" id="wave">0</span>
+                </div>
+                <div class="stat-item" title="Normal Gun Level: How much you've pimped out your peashooter. It's still a peashooter, though.">
+                    <span class="stat-label">Normal Gun Level</span>
+                    <span class="stat-value" id="normalGunLevel">0</span>
+                </div>
+                <div class="stat-item" title="Available Points: Your currency for upgrades. Spend wisely, survivor!">
+                    <span class="stat-label">Available Points</span>
+                    <span class="stat-value" id="availablePoints">0</span>
+                </div>
+                <div class="stat-item" title="Humans Saved: The number of people who owe you big time. Expect thank you cards.">
+                    <span class="stat-label">Humans Saved</span>
+                    <span class="stat-value" id="humansSaved">0</span>
+                </div>
+                <div class="stat-item" title="Humans Killed (Player): Oops. Looks like some civilians got caught in the crossfire. Try not to make it a habit.">
+                    <span class="stat-label">Humans Killed (Player)</span>
+                    <span class="stat-value" id="humansKilledByPlayer">0</span>
+                </div>
+                <div class="stat-item" title="Humans Killed (Enemies): The body count of those you couldn't save. Shame, shame.">
+                    <span class="stat-label">Humans Killed (Enemies)</span>
+                    <span class="stat-value" id="humansKilledByMonsters">0</span>
+                </div>
+                <div class="stat-item" title="Monsters Killed: The number of bad guys that won't be troubling you anymore. Good job!">
+                    <span class="stat-label">Monsters Killed</span>
+                    <span class="stat-value" id="monstersKilled">0</span>
+                </div>
+                <div class="stat-item" title="Bosses Killed: You've faced the big bads and lived to tell the tale. Impressive!">
+                    <span class="stat-label">Bosses Killed</span>
+                    <span class="stat-value" id="bossesKilled">0</span>
+                </div>
+                <div class="stat-item" title="Machine Gun Ammo: Bullets in your 'Lead Storm' mag. Each shot counts for ten!">
+                    <span class="stat-label">Machine Gun Ammo</span>
+                    <span class="stat-value" id="machineGunAmmo">0</span>
+                </div>
+                <div class="stat-item" title="Monsters Hooked: The number of beasts you've snagged with your Rescue Rope. Not exactly fishing, is it?">
+                    <span class="stat-label">Monsters Hooked</span>
+                    <span class="stat-value" id="monstersHooked">0/50</span>
+                </div>
+                <div class="stat-item" title="Game Time: How long you've been fighting for survival. Time flies when you're having fun... or in mortal danger.">
+                    <span class="stat-label">Game Time</span>
+                    <span class="stat-value" id="gameTime">0s</span>
+                </div>
+                <div class="stat-item" title="Bullet Speed: How fast your bullets travel. Remember, speed kills.">
+                    <span class="stat-label">Bullet Speed</span>
+                    <span class="stat-value" id="bulletSpeed">3</span>
+                </div>
+            </div>
+            <div class="hall-of-heroes">
+                <h2>Hall of Heroes</h2>
+                <ol id="highScores" class="hero-list"></ol>
+            </div>
+        </div>
+        <div class="tab-content" id="options">
+            <h1>Options</h1>
+            <h2>Music Selection</h2>
+            <div class="music-selection">
+                <div class="track-option">
+                    <span>No Music</span>
+                    <button class="music-button select-button" data-track="None" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Digital Dreams</span>
+                    <button class="music-button play-button" data-track="Digital Dreams" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Digital Dreams" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Digital Heartbeat</span>
+                    <button class="music-button play-button" data-track="Digital Heartbeat" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Digital Heartbeat" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Eternal Onslaught</span>
+                    <button class="music-button play-button" data-track="Eternal Onslaught" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Eternal Onslaught" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Ethereal Descent</span>
+                    <button class="music-button play-button" data-track="Ethereal Descent" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Ethereal Descent" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Ethereal Quest</span>
+                    <button class="music-button play-button" data-track="Ethereal Quest" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Ethereal Quest" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Pixelated Serenity</span>
+                    <button class="music-button play-button" data-track="Pixelated Serenity" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Pixelated Serenity" type="button">Select</button>
+                </div>
+                <div class="track-option">
+                    <span>Pixelated Survival</span>
+                    <button class="music-button play-button" data-track="Pixelated Survival" type="button">Play</button>
+                    <button class="music-button select-button" data-track="Pixelated Survival" type="button">Select</button>
+                </div>
+            </div>
+            <h2>Key Mapping</h2>
+            <div class="key-mapping">
+                <div class="map-item">
+                    <label for="shootKey">Shoot:</label>
+                    <input type="text" id="shootKey" value="1" maxlength="1" class="key-input">
+                </div>
+                <div class="map-item">
+                    <label for="machineGunKey">Lead Storm:</label>
+                    <input type="text" id="machineGunKey" value="2" maxlength="1" class="key-input">
+                </div>
+                <div class="map-item">
+                    <label for="grappleKey">Rescue Rope:</label>
+                    <input type="text" id="grappleKey" value="3" maxlength="1" class="key-input">
+                </div>
+                <div class="map-item">
+                    <label for="upgradeKey">The Widowmaker:</label>
+                    <input type="text" id="upgradeKey" value="4" maxlength="1" class="key-input">
+                </div>
+                <div class="map-item">
+                    <label for="storeKey">The Black Market:</label>
+                    <input type="text" id="storeKey" value="5" maxlength="1" class="key-input">
+                </div>
+            </div>
+            <button id="saveKeyMapping" type="button" class="save-button">Save Key Mapping</button>
+        </div>
+    </div>
+    <div id="grappleStatus" class="status-message"></div>
+    <div id="notification-container"></div>
+    <div id="modal-container"></div>
+    <script src="index.js"></script>
+</body>
+</html>
